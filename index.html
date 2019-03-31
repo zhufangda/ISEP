@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home_Innovation Challenge</title>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=HOhTaPfZrjId4t12BIMWOMaibB6kChXZ"></script>
+	<!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+   <script src="js/jquery.js"></script>
+   <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+</head><!--/head-->
+
+<body class="homepage">
+   <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    
+                    
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo" style="margin-top: -40px;"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Home</a></li>
+						<!--<li><a href="od.html">OD</a></li>-->
+                        <li><a href="wordcloud.html">Word Cloud</a></li>
+                        <li><a href="tendency.html">Tendency</a></li>
+                        <li><a href="weiguan.html">Sentiment</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Comparetion<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="dongtai.html">动态流量变化</a></li>
+                                <li><a href="2.html">2号线开通前后对比</a></li>
+                                <li><a href="year.html">全年流量对比</a></li>
+								<li><a href="qianxi.html">客流量迁徙</a></li>
+                            </ul>
+                        </li>                     
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+		
+    </header><!--/header-->
+
+    <section id="main-slider" class="no-margin">
+        <div class="carousel slide" style="height:560px;">
+            
+            <div class="carousel-inner">
+
+                <div  style="background-image: url(images/slider/isep_campus.jpg);background-repeat: no-repeat;background-size:100%;">
+                    <div class="container" style="height:560px;" >
+                        <div class="row slide-margin">
+                            <div class="col-sm-6">
+                                
+                                    <h1 class="animation animated-item-1">Natural language process</h1>
+                                    <a class="btn-slide animation animated-item-3" href="#">Read More</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+               
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        
+    </section><!--/#main-slider-->
+
+    <section id="feature" >
+        <div class="container">
+           <div class="center wow fadeInDown">
+                <h2>The most concerned individual or company ID in Twitter</h2>
+			<div id="rose" style="height:500px;width:1200px"></div>
+            </div>
+
+            
+        </div><!--/.container-->
+    </section><!--/#feature-->
+
+    <!--<section id="recent-works">-->
+        <!--<div class="container">-->
+            <!--<div class="center wow fadeInDown">-->
+                <!--<h2>The most popular topics which be re-tweeted in twitter</h2>-->
+                <!--<div id="bar" style="height:400px;width:1200px"></div>-->
+            <!--</div>-->
+        <!--</div>&lt;!&ndash;/.container&ndash;&gt;-->
+    <!--</section>&lt;!&ndash;/#recent-works&ndash;&gt;-->
+
+    <section id="services" class="service-item">
+	   <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Tweet population distribution</h2>
+                <div id="Mymap" style="height:400px;width:1200px"></div>  
+            </div>
+            <div class="row">                                      
+            </div><!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#services-->
+    <section id="middle" style="height:10px;">
+        <div class="container" style="height:10px;">
+            
+        </div><!--/.container-->
+    </section><!--/#middle-->
+
+    
+    <section id="partner">
+        <div class="container">
+            <div class="center wow fadeInDown">
+                <h2>Contact Us</h2>
+                <p class="lead">More date required <br> Big data visualization</p>
+            </div>    
+
+            <div class="partners">
+                <ul>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" src="images/partners/partner1.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms" src="images/partners/partner2.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms" src="images/partners/partner3.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1200ms" src="images/partners/partner4.png"></a></li>
+                    <li> <a href="#"><img class="img-responsive wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="1500ms" src="images/partners/partner5.png"></a></li>
+                </ul>
+            </div>        
+        </div><!--/.container-->
+    </section><!--/#partner-->
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    Copyright &copy; 2019. L'epuip 4 All rights reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">主页</a></li>
+                        <li><a href="#">宏观</a></li>
+                        <li><a href="#">微观</a></li>
+                        <li><a href="#">介观</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+  <script> 
+                  require.config({
+                      paths: {
+                          echarts: 'echarts'
+                      }
+                  });
+
+		//rosepie
+		require(
+            [
+                'echarts',
+                'echarts/chart/pie',
+                'echarts/chart/funnel'				// 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+               
+                var myChart = ec.init(document.getElementById('rose'));
+                $.get('./json/rose.json').done(function (data) {
+					
+                	 var option = {
+                			    title : {
+                			        
+                			        subtext: 'Data set from hackathon AI ISEP',
+                			        x:'center'
+                			    },
+                			    tooltip : {
+                			        trigger: 'item',
+                			        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                			    },
+                			    legend: {
+                			        x : 'center',
+                			        y: 'bottom',
+                			        data: data.data,
+                			    },
+                			    toolbox: {
+                			        show : true,
+                			        feature : {
+                			            mark : {show: true},
+                			            dataView : {show: true, readOnly: false},
+                			            restore : {show: true},
+                			            saveAsImage : {show: true}
+                			        }
+                			    },
+                			    calculable : true,
+                			    series : [
+                			              {
+                			                  name:'面积模式',
+                			                  type:'pie',
+                			                  radius : [30, 110],
+                			                  center : ['50%', 200],
+                			                  roseType : 'area',
+                			                  x: '50%',               // for funnel
+                			                  max: 40,                // for funnel
+                			                  sort : 'ascending',     // for funnel
+                			                  data:data.key1,
+                			                  
+                			              }
+                			          ]
+                	 };
+                	 
+                	 // 为echarts对象加载数据 
+                     myChart.setOption(option); 
+                });
+            }
+        );
+		
+		
+		//面积图
+		require(
+            [
+                'echarts',
+				'echarts/chart/line',
+                'echarts/chart/bar'				// 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('bar')); 
+                
+                var option = {
+    
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['高桥','高桥西','梁祝']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['周一','周二','周三','周四','周五','周六','周日']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'高桥',
+            type:'line',
+            smooth:true,
+            itemStyle: {normal: {areaStyle: {type: 'default'}}},
+            data:[350.6657,347.3123,338.3616,356.5095,412.789,404.5315,410.6684]
+        },
+        {
+            name:'高桥西',
+            type:'line',
+            smooth:true,
+            itemStyle: {normal: {areaStyle: {type: 'default'}}},
+            data:[31.0361,29.6766,29.6,31.6849,36.3506,35.5643,36.7369]
+        },
+        {
+            name:'梁祝',
+            type:'line',
+            smooth:true,
+            itemStyle: {normal: {areaStyle: {type: 'default'}}},
+            data:[71.3342,71.6767,70.1424,69.7863,82.9397,94.9534,91.4794]
+        }
+    ]
+};
+ // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+
+		
+		//宁波地图
+		 require(
+                [
+                    'echarts',
+                    'echarts/chart/map' // 使用柱状图就加载bar模块，按需加载
+                ],
+    
+        function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('Mymap')); 
+        // 使用
+// 自定义扩展图表类型：mapType = NB
+				var cityMap = {
+                     "NB": "330200"
+                 };
+
+
+                
+                 var mapType = [];
+                 var mapGeoData = require('echarts/util/mapData/params');
+                 
+                 for (var city in cityMap) {
+                     mapType.push(city);
+                     // 自定义扩展图表类型
+                     mapGeoData.params[city] = {
+                         getGeoJson: (function (c) {
+                             var geoJsonName = cityMap[c];
+                             return function (callback) {
+                                 $.getJSON('./json/330200.json', callback);
+                             }
+                         })(city)
+                     }
+                 }
+        
+var option = {
+    title : {
+        text : 'Most people twetted',
+        subtext: 'Data set from Hackathon AI',
+        
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: '{b}<br/>{c} (p / km2)'
+    },
+    toolbox: {
+        show : true,
+        orient : 'vertical',
+        x: 'right',
+        y: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    dataRange: {
+        min: 800,
+        max: 50000,
+        text:['High','Low'],
+        realtime: false,
+        calculable : true,
+        color: ['orangered','yellow','lightskyblue']
+    },
+    series : [
+        {
+			x: 'center',
+            name: 'geography aera',
+            type: 'map',
+            mapType: 'NB', // 自定义扩展图表类型
+            itemStyle:{
+                normal:{label:{show:true}},
+                emphasis:{label:{show:true}}
+            },
+            data:[
+                {name: 'usa', value: 826},
+                {name: 'ca', value: 15477.48},
+                {name: 'new', value: 31686.1},
+                {name: 'united', value: 6992.6},
+                {name: 'tx', value: 44045.49},
+                {name: 'states', value: 40689.64},
+                {name: 'california', value: 37659.78},
+                {name: 'the', value: 45180.97},
+                {name: 'york', value: 55204.26},
+                {name: 'los', value: 21900.9},
+                {name: 'angles', value: 4918.26},
+            ],
+            // 自定义名称映射
+            
+            // 文本位置修正
+            textFixed : {
+                'Yau Tsim Mong' : [-10, 0]
+            },
+            // 文本直接经纬度定位
+            geoCoord : {
+                'Islands' : [113.95, 22.26]
+            }
+        }
+    ]
+};
+ myChart.setOption(option); 
+            }
+        ); 
+		
+		//模拟迁徙
+
+		</script>
+   
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="echarts/echarts.js"></script>
+    <script src="js/jquery.min.js"></script>
+    
+
+</body>
+</html>

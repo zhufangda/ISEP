@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>宁波交通_宏观</title>
+    
+    <!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+</head><!--/head-->
+
+<body>
+
+        <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    
+                    
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <!--<li><a href="od.html">OD</a></li>-->
+                        <li><a href="wordcloud.html">Word Cloud</a></li>
+                        <li><a href="tendency.html">Tendency</a></li>
+                        <li><a href="weiguan.html">Sentiment</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">变化对比<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="dongtai.html">动态流量变化</a></li>
+                                <li><a href="2.html">2号线开通前后对比</a></li>
+                                <li><a href="year.html">全年流量对比</a></li>
+								<li><a href="qianxi.html">客流量迁徙</a></li>
+                            </ul>
+                        </li>                     
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+		
+    </header><!--/header-->
+
+    <section id="feature" class="transparent-bg">
+        <div class="container">
+           <div class="center wow fadeInDown">
+                <h2>世纪大道全年一周内日均流量占比</h2>
+                
+            </div>
+
+            <div class="row" >
+                <div id="main" style="height:400px;width:1200px"></div>
+            </div><!--/.row--> 
+
+
+            <div class="get-started center wow fadeInDown">
+                <h2>全年鼓楼站点24小时平均进出站流量</h2>
+                <div id="zz" style="height:400px;width:1100px"></div>
+				
+            </div><!--/.get-started-->
+        </div><!--/.container-->
+    </section><!--/#feature-->
+
+
+     <section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Faq</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Developers</h3>
+                        <ul>
+                            <li><a href="#">Web Development</a></li>
+                           
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Our Partners</h3>
+                        <ul>
+                            <li><a href="#">Adipisicing Elit</a></li>
+                          
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+
+   <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    Copyright &copy; 2016.Company name All rights reserved.More Templates 
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">主页</a></li>
+                        <li><a href="#">宏观</a></li>
+                        <li><a href="#">微观</a></li>
+                        <li><a href="#">介观</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+ <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+
+        // 使用
+
+		require(
+            [
+                'echarts',
+				'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+                var labelTop = {
+    normal : {
+        label : {
+            show : true,
+            position : 'center',
+            formatter : '{b}',
+            textStyle: {
+                baseline : 'bottom'
+            }
+        },
+        labelLine : {
+            show : false
+        }
+    }
+};
+var labelFromatter = {
+    normal : {
+        label : {
+            formatter : function (params){
+                return 100 - params.value + '%'
+            },
+            textStyle: {
+                baseline : 'top'
+            }
+        }
+    },
+}
+var labelBottom = {
+    normal : {
+        color: '#ccc',
+        label : {
+            show : true,
+            position : 'center'
+        },
+        labelLine : {
+            show : false
+        }
+    },
+    emphasis: {
+        color: 'rgba(0,0,0,0)'
+    }
+};
+var radius = [40, 55];
+                var option = {
+    legend: {
+        x : 'center',
+        y : 'center',
+        data:[
+            '星期一','星期二','星期三','星期四','星期五',
+            '星期六', '星期日'
+        ]
+    },
+    title : {
+        subtext: '数据来自宁波交通',
+        x: 'center'
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            dataView : {show: true, readOnly: false},
+            magicType : {
+                show: true,
+                type: ['pie', 'funnel'],
+                option: {
+                    funnel: {
+                        width: '20%',
+                        height: '30%',
+                        itemStyle : {
+                            normal : {
+                                label : {
+                                    formatter : function (params){
+                                        return 'other\n' + params.value + '%\n'
+                                    },
+                                    textStyle: {
+                                        baseline : 'middle'
+                                    }
+                                }
+                            },
+                        }
+                    }
+                }
+            },
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            type : 'pie',
+            center : ['10%', '30%'],
+            radius : radius,
+            x: '0%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                {name:'other', value:85, itemStyle : labelBottom},
+                {name:'星期一', value:15,itemStyle : labelTop}
+            ]
+        },
+        {
+            type : 'pie',
+            center : ['30%', '30%'],
+            radius : radius,
+            x:'20%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                {name:'other', value:85, itemStyle : labelBottom},
+                {name:'星期二', value:15,itemStyle : labelTop}
+            ]
+        },
+        {
+            type : 'pie',
+            center : ['50%', '30%'],
+            radius : radius,
+            x:'40%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                {name:'other', value:85, itemStyle : labelBottom},
+                {name:'星期三', value:15,itemStyle : labelTop}
+            ]
+        },
+        {
+            type : 'pie',
+            center : ['70%', '30%'],
+            radius : radius,
+            x:'60%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                {name:'other', value:85, itemStyle : labelBottom},
+                {name:'星期四', value:15,itemStyle : labelTop}
+            ]
+        },
+        {
+            type : 'pie',
+            center : ['90%', '30%'],
+            radius : radius,
+            x:'80%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                {name:'other', value:83, itemStyle : labelBottom},
+                {name:'星期五', value:17,itemStyle : labelTop}
+            ]
+        },
+        {
+            type : 'pie',
+            center : ['40%', '70%'],
+            radius : radius,
+            y: '55%',   // for funnel
+            x: '0%',    // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                {name:'other', value:88, itemStyle : labelBottom},
+                {name:'星期六', value:12,itemStyle : labelTop}
+            ]
+        },
+        {
+            type : 'pie',
+            center : ['60%', '70%'],
+            radius : radius,
+            y: '55%',   // for funnel
+            x:'20%',    // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                {name:'other', value:89, itemStyle : labelBottom},
+                {name:'星期日', value:11,itemStyle : labelTop}
+            ]
+        }
+    ]
+};
+
+
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+            }
+        );
+
+
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar',
+				'echarts/chart/line'// 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('zz'));
+
+                var option = {
+    title :{
+        text : '鼓楼站全年平均24时平均进出站流量',
+        subtext : '数据来自宁波交通'
+    },
+    tooltip : {
+        trigger: 'axis',
+        formatter: function (params){
+            return params[0].name + ' : '
+                   + (params[2].value - params[1].value > 0 ? '+' : '-')
+                   + params[0].value + '<br/>'
+                   + params[2].seriesName + ' : ' + params[2].value + '<br/>'
+                   + params[3].seriesName + ' : ' + params[3].value + '<br/>'
+        }
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    legend: {
+        data:['进站', '出站'],
+        selectedMode:false
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['3','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            min : 0,
+            max : 10000
+        }
+    ],
+    series : [
+        {
+            name:'进站',
+            type:'line',
+            data:[0.625,4,319.75,1627.583333,2586.333333,2423.541667,2630.208333,2704.958333,3010.375,3112.791667,3345.25,4098.916667,4304,9297.083333,5304.291667,2814.208333,3031.916667,2134.625,340.0416667,1.25]
+        },
+        {
+            name:'出站',
+            type:'line',
+            symbol:'none',
+            itemStyle:{
+                normal:{
+                  lineStyle: {
+                    width:2,
+                    type:'dashed'
+                  }
+                }
+            },
+            data:[1.25,0.25,211.25,3942.5,1267,4551.625,3236.708333,3019.333333,3498.708333,4120.625,3557.916667,3546.666667,3256.666667,4909.958333,4164,1941.791667,1274.75,847.2083333,224.4583333,1.708333333]
+        },
+        {
+            name:'出站2',
+            type:'bar',
+            stack: '1',
+            barWidth: 6,
+            itemStyle:{
+                normal:{
+                    color:'rgba(0,0,0,0)'
+                },
+                emphasis:{
+                    color:'rgba(0,0,0,0)'
+                }
+            },
+            data:[0.625,0.25,211.25,1627.583333,1267,2423.541667,2630.208333,2704.958333,3010.375,3112.791667,3345.25,3546.666667,3256.666667,4909.958333,4164,1941.791667,1274.75,847.2083333,224.4583333,1.708333333]
+        },
+        {
+            name:'变化',
+            type:'bar',
+            stack: '1',
+            data:[
+              0.625,3.75,
+              {value : 108.5,itemStyle:{ normal:{color:'red'}}},
+              {value : 2314.916667, itemStyle:{ normal:{color:'red'}}},
+              1319,
+			  {value : 2128.083333, itemStyle:{ normal:{color:'red'}}},
+			  {value : 606.5, itemStyle:{ normal:{color:'red'}}},
+			  {value : 314.375, itemStyle:{ normal:{color:'red'}}},
+			  {value : 488.3333333, itemStyle:{ normal:{color:'red'}}},
+			  {value : 1007.833333, itemStyle:{ normal:{color:'red'}}},
+			  {value : 212.6666667, itemStyle:{ normal:{color:'red'}}},
+			  552.25,1047.333333,4387.125,1140.291667,872.4166667,1757.166667,1287.416667,115.5833333,0.458333333
+            ]
+        }
+    ]
+};
+
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+            }
+        );
+    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="echarts/echarts.js"></script>
+    <script src="js/jquery.min.js"></script>
+</body>
+</html>

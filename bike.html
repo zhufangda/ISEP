@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>自行车地铁数据联合分析</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	<script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+</head><!--/head-->
+<body>
+
+     <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    
+                    
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">主页</a></li>
+						<li><a href="od.html">OD</a></li>
+                        <li><a href="tendency.html">日均流量</a></li>
+                        <li><a href="weiguan.html">月均流量</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">变化对比<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="dongtai.html">动态流量变化</a></li>
+                                <li><a href="2.html">2号线开通前后对比</a></li>
+                                <li><a href="year.html">全年流量对比</a></li>
+								<li><a href="qianxi.html">客流量迁徙</a></li>
+                            </ul>
+                        </li>
+						<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">自行车<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="dongtai.html">动态流量变化</a></li>
+                                <li><a href="2.html">2号线开通前后对比</a></li>
+                                <li><a href="year.html">全年流量对比</a></li>
+								<li><a href="qianxi.html">客流量迁徙</a></li>
+                            </ul>
+                        </li>     
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+		
+    </header><!--/header-->
+
+    <section id="bike" class="container text-center">
+         <div class="container">
+            <div class="center">  
+                <h2>乘坐完地铁后骑自行车的周内流量</h2>
+            </div>  
+            <div id="main" style="height:500px;width:1150px"></div>
+        </div><!--/container-->
+    </section><!--/#error-->
+
+     <section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Faq</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Developers</h3>
+                        <ul>
+                            <li><a href="#">Web Development</a></li>
+                           
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Our Partners</h3>
+                        <ul>
+                            <li><a href="#">Adipisicing Elit</a></li>
+                          
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    Copyright &copy; 2016.Company name All rights reserved.More Templates 
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">主页</a></li>
+                        <li><a href="#">宏观</a></li>
+                        <li><a href="#">微观</a></li>
+                        <li><a href="#">介观</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+	<script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/line'			// 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                var option = {
+    title : {
+        text: '一周内坐完地铁骑自行车人数',
+        subtext: '数据来自宁波大数据'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['骑车人数']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['周一','周二','周三','周四','周五','周六','周日']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            axisLabel : {
+                formatter: '{value}P'
+            }
+        }
+    ],
+    series : [
+        {
+            name:'骑车人数',
+            type:'line',
+            data:[18871,19399,19593,18546,22320,20833,18833],
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        }
+    ]
+};
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+</body>
+</html>

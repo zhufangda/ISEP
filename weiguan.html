@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>宁波交通_微观</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	<script src="echarts/echarts.js"></script>
+</head><!--/head-->
+<body>
+
+        <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    
+                    
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <!--<li><a href="od.html">OD</a></li>-->
+                        <li><a href="wordcloud.html">Word Cloud</a></li>
+                        <li><a href="tendency.html">Tendency</a></li>
+                        <li><a href="weiguan.html">Sentiment</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">变化对比<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="dongtai.html">动态流量变化</a></li>
+                                <li><a href="2.html">2号线开通前后对比</a></li>
+                                <li><a href="year.html">全年流量对比</a></li>
+								<li><a href="qianxi.html">客流量迁徙</a></li>
+                            </ul>
+                        </li>                     
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+		
+    </header><!--/header-->
+    <section id="portfolio">
+        <div class="container">
+            <div class="center">
+               <h2>全年每站每月客流总量占比</h2>
+            <div id="main" style="height:600px;width:1150px"></div>
+			</div>
+ 
+         </div>
+            
+    </section><!--/#portfolio-item-->
+    
+     <section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Faq</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Developers</h3>
+                        <ul>
+                            <li><a href="#">Web Development</a></li>
+                           
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Our Partners</h3>
+                        <ul>
+                            <li><a href="#">Adipisicing Elit</a></li>
+                          
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    Copyright &copy; 2016.Company name All rights reserved.More Templates 
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">主页</a></li>
+                        <li><a href="#">宏观</a></li>
+                        <li><a href="#">微观</a></li>
+                        <li><a href="#">介观</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie',
+				'echarts/chart/funnel'// 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                $.get('./json/pi.json').done(function (pi) {
+				var idx = 1;
+                
+				var option = {
+    timeline : {
+        data : [
+            '2015-01-01', '2015-02-01', '2015-03-01', '2015-04-01', '2015-05-01',
+            { name:'2015-06-01', symbol:'emptyStar6', symbolSize:8 },
+            '2015-07-01', '2015-08-01', '2015-09-01', '2015-10-01', '2015-11-01',
+            { name:'2015-12-01', symbol:'star6', symbolSize:8 }
+        ],
+        label : {
+            formatter : function(s) {
+                return s.slice(0, 7);
+            }
+        },
+		autoPlay : true,
+        playInterval : 1000
+    },
+    options : [
+        {
+            title : {
+				x:'center',
+                subtext: '数据来自宁波交通'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                data:pi.name,
+				orient : 'vertical',
+				x:'left',
+				
+				
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            series : [
+                {
+                    name:pi.value1.name,
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:pi.value1,
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value2.name,
+                    type:'pie',
+                    data:pi.value2,
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value3.name,
+                    type:'pie',
+                    data:pi.value3,
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value4.name,
+                    type:'pie',
+                    data:pi.value4,
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value5.name,
+                    type:'pie',
+                    data:pi.value5,
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value6.name,
+                    type:'pie',
+                    data:pi.value6,
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value7.name,
+                    type:'pie',
+                    data:pi.value7,
+				}
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value8.name,
+                    type:'pie',
+                    data:pi.value8,
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value9.name,
+                    type:'pie',
+                    data:pi.value9,
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value10.name,
+                    type:'pie',
+                    data:pi.value10,
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value11.name,
+                    type:'pie',
+                    data:pi.value11,
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:pi.value12.name,
+                    type:'pie',
+                    data:pi.value12,
+                }
+            ]
+        }
+    ]
+};
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+				});
+            }
+        );
+    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+	<script src="echarts/echarts.js"></script>
+    <script src="js/jquery.min.js"></script>
+</body>
+</html>

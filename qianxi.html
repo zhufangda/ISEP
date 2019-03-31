@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>宁波交通_客流量迁徙</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=HOhTaPfZrjId4t12BIMWOMaibB6kChXZ"></script>
+    <!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	<script src="js/jquery.js"></script>
+	 <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+</head><!--/head-->
+
+<body>
+
+        <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    
+                    
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">主页</a></li>
+						<li><a href="od.html">OD</a></li>
+                        <li><a href="tendency.html">日均流量</a></li>
+                        <li><a href="weiguan.html">月均流量</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">变化对比<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="dongtai.html">动态流量变化</a></li>
+                                <li><a href="2.html">2号线开通前后对比</a></li>
+                                <li><a href="year.html">全年流量对比</a></li>
+								<li><a href="qianxi.html">客流量迁徙</a></li>
+                            </ul>
+                        </li>                     
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+		
+    </header><!--/header-->
+
+    <section id="blog" class="container">
+        <div class="center">
+            <h2>随站点迁徙数据</h2>
+            <div id="main" style="height:600px;width:1100px"></div>  
+        </div>
+
+        
+    </section><!--/#blog-->
+
+     <section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Faq</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Developers</h3>
+                        <ul>
+                            <li><a href="#">Web Development</a></li>
+                           
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Our Partners</h3>
+                        <ul>
+                            <li><a href="#">Adipisicing Elit</a></li>
+                          
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+   <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    Copyright &copy; 2016.Company name All rights reserved.More Templates 
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">主页</a></li>
+                        <li><a href="#">宏观</a></li>
+                        <li><a href="#">微观</a></li>
+                        <li><a href="#">介观</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+	 <script type="text/javascript">
+    $(document).ready(function() {
+    	
+    require.config({
+        paths: {
+            echarts: './echarts'
+        }
+    });
+
+    require(
+    	    [
+    	        'echarts',
+    	        'echarts/chart/main',
+    	        'echarts/chart/map'
+    	        
+    	    ],
+    	    function (ec,BMapExtension) {
+			$.get('./json/map1.json').done(function (map1) {  
+    	    
+    	    	 var BMapExt = new BMapExtension($('#main')[0], BMap, ec,{
+    	             enableMapClick: false});
+    	    	    var map = BMapExt.getMap();
+    	    	    var container = BMapExt.getEchartsContainer();
+    	    	   
+    	    	    var point = new BMap.Point(121.515341,29.887644);
+    	    	    map.centerAndZoom(point, 14);
+    	    	    map.enableScrollWheelZoom(true);
+    	    	    option = {
+    	    	            color: ['gold','aqua','lime'],
+    	    	            title : {
+    	    	                text: '模拟迁徙',
+    	    	                subtext:'数据纯属虚构',
+    	    	                x:'right'
+    	    	            },
+    	    	            tooltip : {
+    	    	                trigger: 'item',
+    	    	                formatter: function (v) {
+    	    	                    return v[1].replace(':', ' > ');
+    	    	                }
+    	    	            },
+    	    	            legend: {
+    	    	                orient: 'vertical',
+    	    	                x:'left',
+    	    	                data:['高桥西', '东环南路'],
+    	    	                selectedMode: 'single',
+    	    	                selected:{
+    	    	                    '东环南路' : false,
+    	    	                }
+    	    	            },
+    	    	            toolbox: {
+    	    	                show : true,
+    	    	                orient : 'vertical',
+    	    	                x: 'right',
+    	    	                y: 'center',
+    	    	                feature : {
+    	    	                    mark : {show: true},
+    	    	                    dataView : {show: true, readOnly: false},
+    	    	                    restore : {show: true},
+    	    	                    saveAsImage : {show: true}
+    	    	                }
+    	    	            },
+    	    	            dataRange: {
+    	    	                min : 0,
+    	    	                max : 3000,
+    	    	                y: '60%',
+    	    	                calculable : true,
+    	    	                color: ['#ff3333', 'orange', 'yellow','lime','aqua']
+    	    	            },
+    	    	            series : [
+    	    	                {
+    	    	                    name:'高桥西',
+    	    	                    type:'map',
+    	    	                    mapType: 'none',
+    	    	                    data:[],
+    	    	                    geoCoord: {
+    	    	                        '高桥西': [121.460156,29.917056],
+    	    	                        '高桥': [121.470657,29.90776],
+    	    	                        '梁祝': [121.482968,29.900737],
+    	    	                        '芦港': [121.493779,29.896292],
+    	    	                        '徐家漕长乐': [121.503478,29.893286],
+    	    	                        '望春桥': [121.515341,29.887644],
+    	    	                        '泽民': [121.527711,29.884582],
+    	    	                        '大卿桥': [121.538602,29.882567],
+    	    	                        '西门口': [121.545999,29.881237],
+    	    	                        '鼓楼': [121.555797,29.879997],
+    	    	                        '东门口': [121.562152,29.87746],
+    	    	                        '江厦桥东': [121.571461,29.875734],
+    	    	                        '舟孟北路': [121.580355,29.873414],
+    	    	                        '樱花公园': [121.587685,29.870428],
+    	    	                        '福明路': [121.599505,29.866901],
+										'世纪大道':[121.608608,29.864581],
+										'海晏北路':[121.621364,29.866053],
+										'福庆北路':[121.630958,29.864424],
+										'盛莫路':[121.643067,29.862326],
+										'东环南路':[121.657404,29.858536],
+    	    	                       
+    	    	                    },
+
+    	    	                    markLine : {
+    	    	                        smooth:true,
+    	    	                        effect : {
+    	    	                            show: true,
+    	    	                            scaleSize: 1,
+    	    	                            period: 30,
+    	    	                            color: '#fff',
+    	    	                            shadowBlur: 10
+    	    	                        },
+    	    	                        itemStyle : {
+    	    	                            normal: {
+    	    	                                borderWidth:1,
+    	    	                                lineStyle: {
+    	    	                                    type: 'solid',
+    	    	                                    shadowBlur: 10
+    	    	                                }
+    	    	                            }
+    	    	                        },
+    	    	                        data : map1.data,
+    	    	                    },
+    	    	                    markPoint : {
+    	    	                        symbol:'emptyCircle',
+    	    	                        symbolSize : function (v){
+    	    	                            return 10 + v/10
+    	    	                        },
+    	    	                        effect : {
+    	    	                            show: true,
+    	    	                            shadowBlur : 0
+    	    	                        },
+    	    	                        itemStyle:{
+    	    	                            normal:{
+    	    	                                label:{show:false}
+    	    	                            }
+    	    	                        },
+    	    	                        data : [
+											{"value":10, "name":"高桥西"},
+											{"value":5, "name":"徐家漕长乐"},
+											{"value":15, "name":"望春桥"},
+											{"value":25, "name":"西门口"},
+											{"value":20, "name":"芦港"},
+											{"value":35, "name":"梁祝"}
+											
+    	    	                        ]
+    	    	                    }
+    	    	                    
+    	    	                },
+    	    	                {
+    	    	                    name:'东环南路',
+    	    	                    type:'map',
+    	    	                    mapType: 'none',
+    	    	                    data:[],
+    	    	                    markLine : {
+    	    	                        smooth:true,
+    	    	                        effect : {
+    	    	                            show: true,
+    	    	                            scaleSize: 1,
+    	    	                            period: 30,
+    	    	                            color: '#fff',
+    	    	                            shadowBlur: 10
+    	    	                        },
+    	    	                        itemStyle : {
+    	    	                            normal: {
+    	    	                                borderWidth:1,
+    	    	                                lineStyle: {
+    	    	                                    type: 'solid',
+    	    	                                    shadowBlur: 10
+    	    	                                }
+    	    	                            }
+    	    	                        },
+    	    	                        data : map1.data1,
+									},
+    	    	                    markPoint : {
+    	    	                        symbol:'emptyCircle',
+    	    	                        symbolSize : function (v){
+    	    	                            return 10 + v/10
+    	    	                        },
+    	    	                        effect : {
+    	    	                            show: true,
+    	    	                            shadowBlur : 0
+    	    	                        },
+    	    	                        itemStyle:{
+    	    	                            normal:{
+    	    	                                label:{show:false}
+    	    	                            }
+    	    	                        },
+    	    	                        data : [
+    	    	                            {"value":10, "name":"高桥西"},
+											{"value":5, "name":"徐家漕长乐"},
+											{"value":15, "name":"望春桥"},
+											{"value":25, "name":"西门口"},
+											{"value":20, "name":"芦港"},
+											{"value":35, "name":"梁祝"}
+    	    	                        ]
+    	    	                    }
+    	    	                }
+    	    	               
+    	    	               
+    	    	            ]
+    	    	        };
+    	    	       
+    	    	        myChart = BMapExt.initECharts(container);
+    	    	        window.onresize = myChart.resize;
+    	    	        BMapExt.setOption(option, true)
+    	    	    
+    	    });
+			});
+    	}
+	);
+    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+	<script src="echarts/echarts.js"></script>
+    <script src="js/jquery.min.js"></script>
+</body>
+</html>

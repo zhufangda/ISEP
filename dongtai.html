@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>宁波交通_动态流量变化</title>
+    
+    <!-- core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	<script src="echarts/echarts.js"></script>
+</head><!--/head-->
+
+<body>
+
+       <header id="header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+                    
+                    
+                </div>
+            </div><!--/.container-->
+        </div><!--/.top-bar-->
+
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">主页</a></li>
+						<li><a href="od.html">OD</a></li>
+                        <li><a href="tendency.html">日均流量</a></li>
+                        <li><a href="weiguan.html">月均流量</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">变化对比<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="dongtai.html">动态流量变化</a></li>
+                                <li><a href="2.html">2号线开通前后对比</a></li>
+                                <li><a href="year.html">全年流量对比</a></li>
+								<li><a href="qianxi.html">客流量迁徙</a></li>
+                            </ul>
+                        </li>                     
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+		
+    </header><!--/header-->
+
+    <section id="blog" class="container">
+        <div class="center">
+            <h2>全年每站点节假日进出站总流量</h2>
+        </div>
+
+        <div class="blog">
+            <div id="main" style="height:400px;width:1200px"></div>
+
+         </div><!--/.blog-->
+
+    </section><!--/#blog-->
+
+
+     <section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="#">About us</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Faq</a></li>
+                            
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Developers</h3>
+                        <ul>
+                            <li><a href="#">Web Development</a></li>
+                           
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="widget">
+                        <h3>Our Partners</h3>
+                        <ul>
+                            <li><a href="#">Adipisicing Elit</a></li>
+                          
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+            </div>
+        </div>
+    </section><!--/#bottom-->
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    Copyright &copy; 2016.Company name All rights reserved.More Templates 
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">主页</a></li>
+                        <li><a href="#">宏观</a></li>
+                        <li><a href="#">微观</a></li>
+                        <li><a href="#">介观</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+<script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar',
+				'echarts/chart/line'				// 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main')); 
+                
+                var option = {
+    timeline:{ 
+	data:[
+            '2015-01-01','2015-02-18','2015-04-04','2015-05-01','2015-06-22',
+            '2015-09-26','2015-10-01'
+        ],
+        label : {
+			interval: 0,
+            formatter : function(s) {
+                return s.slice(0, 10);
+            }
+        },
+        autoPlay : true,
+        playInterval : 1000
+    },
+    options:[
+        {
+            title : {
+                'text':'元旦期间地铁各站进出站流量',
+                'subtext':'数据来自宁波交通'
+            },
+            tooltip : {'trigger':'axis'},
+            legend : {
+                x:'right',
+                'data':['进站','出站'],
+                'selected':{
+                    '进站':true,
+                    '出站':true
+                }
+            },
+            toolbox : {
+                'show':true, 
+                orient : 'vertical',
+                x: 'right', 
+                y: 'center',
+                'feature':{
+                    'mark':{'show':true},
+                    'dataView':{'show':true,'readOnly':false},
+                    'magicType':{'show':true,'type':['line','bar','stack','tiled']},
+                    'restore':{'show':true},
+                    'saveAsImage':{'show':true}
+                }
+            },
+            calculable : true,
+            grid : {'y':80,'y2':100},
+            xAxis : [{
+                'type':'category',
+                'axisLabel':{'interval':0},
+                'data':[
+                    '高桥西','\n高桥','梁祝','\n芦港','徐家漕长乐','\n望春桥','泽民','\n大卿桥',
+                    '西门口','\n鼓楼','东门口','\n江厦桥东','舟孟北路','\n樱花公园','福明路','\n世纪大道',
+                    '海晏北路','\n福庆北路','盛莫路','\n东环南路'
+                ]
+            }],
+            yAxis : [
+                {
+                    'type':'value',
+                    'name':'P（进站人流量）',
+                    'max':53500
+                },
+                {
+                    'type':'value',
+                    'name':'p（出站人流量）'
+                }
+            ],
+            series : [
+                {
+                    'name':'进站',
+                    'type':'bar',
+                    'markLine':{
+                        symbol : ['arrow','none'],
+                        symbolSize : [4, 2],
+                        itemStyle : {
+                            normal: {
+                                lineStyle: {color:'orange'},
+                                barBorderColor:'orange',
+                                label:{
+                                    position:'left',
+                                    formatter:function(params){
+                                        return Math.round(params.value);
+                                    },
+                                    textStyle:{color:'orange'}
+                                }
+                            }
+                        },
+                        'data':[{'type':'average','name':'平均值'}]
+                    },
+                    'data': dataMap.dataGDP['2002']
+                },
+                {
+                    'name':'出站','yAxisIndex':1,
+					'type':'bar',
+					'markLine':{
+                        symbol : ['arrow','none'],
+                        symbolSize : [4, 2],
+                        itemStyle : {
+                            normal: {
+                                lineStyle: {color:'blue'},
+                                barBorderColor:'blue',
+                                label:{
+                                    position:'right',
+                                    formatter:function(params){
+                                        return Math.round(params.value);
+                                    },
+                                    textStyle:{color:'blue'}
+                                }
+                            }
+                        },
+						'data':[{'type':'average','name':'平均值'}]
+                    },
+                    'data': dataMap.dataFinancial['2002']
+                }
+                
+            ]
+        },
+       
+        {
+            title : {'text':'春节期间地铁各站进出站流量'},
+            series : [
+                {'data': dataMap.dataGDP['2003']},
+                {'data': dataMap.dataFinancial['2003']}
+            ]
+        },
+        {
+            title : {'text':'清明期间地铁各站进出站流量'},
+            series : [
+                {'data': dataMap.dataGDP['2004']},
+                {'data': dataMap.dataFinancial['2004']}
+            ]
+        },
+        {
+            title : {'text':'五一期间地铁各站进出站流量'},
+            series : [
+                {'data': dataMap.dataGDP['2005']},
+                {'data': dataMap.dataFinancial['2005']}
+            ]
+        },
+        {
+            title : {'text':'端午期间地铁各站进出站流量'},
+            series : [
+                {'data': dataMap.dataGDP['2006']},
+                {'data': dataMap.dataFinancial['2006']}
+            ]
+        },
+        {
+            title : {'text':'中秋期间地铁各站进出站流量'},
+            series : [
+                {'data': dataMap.dataGDP['2007']},
+                {'data': dataMap.dataFinancial['2007']}
+            ]
+        },
+        {
+            title : {'text':'十一期间地铁各站进出站流量'},
+            series : [
+                {'data': dataMap.dataGDP['2008']},
+                {'data': dataMap.dataFinancial['2008']}
+            ]
+        }
+        
+    ]
+};
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+	<script src="js/timeline.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/wow.min.js"></script>
+	<script src="echarts/echarts.js"></script>
+    <script src="js/jquery.min.js"></script>
+</body>
+</html>
